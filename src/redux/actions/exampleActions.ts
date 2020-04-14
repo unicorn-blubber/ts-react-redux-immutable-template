@@ -19,8 +19,7 @@ interface BuildThunkArgs {
 }
 
 interface ThunkProps {
-  data?: {},
-  params?: {},
+  finalConfig: AxiosRequestConfig,
 }
 
 interface ThunkDispatchProps {
@@ -32,14 +31,13 @@ interface ThunkDispatchProps {
 const buildThunk = ({
   config, start, success, failure,
 }: BuildThunkArgs) => ({
-  data,
-  params,
+  finalConfig,
 }: ThunkProps) => async (
   dispatch: ThunkDispatch<ThunkDispatchProps, void, any>,
 ) => {
   dispatch({ type: start });
   try {
-    const response = await Axios.request({ ...config, data, params });
+    const response = await Axios.request({ ...config, ...finalConfig });
     dispatch({ type: success, payload: response.data });
   } catch (error) {
     dispatch({ type: failure, payload: error.response });

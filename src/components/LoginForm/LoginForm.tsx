@@ -44,7 +44,7 @@ const LoginForm = () => {
       return;
     }
     try {
-      await dispatch(postLogin({ data: values }));
+      await dispatch(postLogin({ finalConfig: { data: values } }));
       setValues(defaultValues);
       // redirect user beyond the login page
     } catch (error) {
@@ -54,7 +54,7 @@ const LoginForm = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setValues(oldValues => ({ ...oldValues, [name]: value }));
+    setValues((oldValues) => ({ ...oldValues, [name]: value }));
   };
 
   return (
