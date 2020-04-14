@@ -22,7 +22,36 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'jest',
   ],
   rules: {
+    'react/jsx-props-no-spreading': 0,
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: [
+          '.jsx',
+          '.tsx',
+        ]
+      },
+    ],
+  },
+  settings: {
+    'import/extensions': [
+      '.js',
+      '.jsx',
+      '.ts',
+      '.tsx',
+    ],
+    'import/resolver': {
+      node: {
+        extensions: [
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx',
+        ],
+      },
+    },
   },
 };
