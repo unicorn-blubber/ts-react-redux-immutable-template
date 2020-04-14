@@ -4,3 +4,4 @@ export { axiosOAuthLogin } from './axiosOAuthLogin';
 export { buildMapStateToProps } from './buildMapStateToProps';
 export { filterObject } from './filterObject';
 export { setFormErrors } from './setFormErrors';
+export { setFormErrorsIm } from './setFormErrorsIm';

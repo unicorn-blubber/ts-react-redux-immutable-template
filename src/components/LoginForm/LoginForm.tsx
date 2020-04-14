@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+import { Record } from 'immutable';
 
 import './LoginForm.scss';
 
 import { postLogin } from '../../redux/actions';
-import { setFormErrors } from '../../utils';
+import { setFormErrorsIm } from '../../utils';
 
 const loginSchema = Yup.object().shape({
   username: Yup
@@ -30,22 +31,26 @@ const defaultErrors = {
 };
 
 const LoginForm = () => {
-  const [values, setValues] = useState(defaultValues); // make this immutable 
-  const [errors, setErrors] = useState(defaultErrors); // make this immutable 
+  const [values, setValues] = useState(Record(defaultValues)());
+  const [errors, setErrors] = useState(Record(defaultErrors)());
   const dispatch = useDispatch();
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       await loginSchema.validate(values, { abortEarly: false });
-      setErrors(defaultErrors);
+      setErrors(errors.clear());
     } catch (error) {
-      setFormErrors({ setter: setErrors, errors: error.inner });
+      setFormErrorsIm({
+        setter: setErrors as unknown as React.Dispatch<React.SetStateAction<Record<{}>>>, // there should be a better way to do this in setFormErrorsIm.ts
+        errors: error.inner,
+      });
       return;
     }
     try {
       await dispatch(postLogin({ finalConfigSpecs: { data: values } }));
-      setValues(defaultValues); // edit for immutability (clear()) 
+      setValues(values.clear());
       // redirect user beyond the login page
     } catch (error) {
       // handle login error
