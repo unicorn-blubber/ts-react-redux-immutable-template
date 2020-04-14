@@ -44,7 +44,7 @@ const LoginForm = () => {
       return;
     }
     try {
-      await dispatch(postLogin({ finalConfig: { data: values } }));
+      await dispatch(postLogin({ finalConfigSpecs: { data: values } }));
       setValues(defaultValues);
       // redirect user beyond the login page
     } catch (error) {
