@@ -89,7 +89,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: [...state.data, payload] as [{ id: number }], // figure out a way to not have to cast
+        data: [...state.data, payload] as [{ id: number }], // better way? 
       });
     case 'POST_DATA_WITH_AUTH_FAILURE':
       return state.merge({
@@ -105,7 +105,9 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: state.data.map((data) => (data.id === payload.id ? payload : data)) as [{ id: number }], // figure out a way to not have to cast
+        data: state.data.map(
+          (data) => (data.id === payload.id ? payload : data),
+        ) as [{ id: number }], // better way? 
       });
     case 'PUT_DATA_WITH_AUTH_FAILURE':
       return state.merge({
@@ -121,7 +123,9 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         deletingTab: false,
         errorDeletingTab: false,
-        data: state.data.filter((data) => data.id !== payload.id) as [{ id: number }], // figure out a way to not have to cast
+        data: state.data.filter(
+          (data) => data.id !== payload.id,
+        ) as [{ id: number }], // better way? 
       });
     case 'DELETE_DATA_WITH_AUTH_FAILURE':
       return state.merge({
