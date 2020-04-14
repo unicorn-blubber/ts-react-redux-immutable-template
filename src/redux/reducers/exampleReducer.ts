@@ -39,6 +39,7 @@ const initialState: ExampleReducerState = Record<ExampleReducerStateInterface>({
   errorDeletingTab: false,
 })();
 
+
 interface ActionProps {
   type: Action,
   payload?: any,
