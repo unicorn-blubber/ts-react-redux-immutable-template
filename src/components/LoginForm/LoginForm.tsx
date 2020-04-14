@@ -30,8 +30,8 @@ const defaultErrors = {
 };
 
 const LoginForm = () => {
-  const [values, setValues] = useState(defaultValues);
-  const [errors, setErrors] = useState(defaultErrors);
+  const [values, setValues] = useState(defaultValues); // make this immutable 
+  const [errors, setErrors] = useState(defaultErrors); // make this immutable 
   const dispatch = useDispatch();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -45,7 +45,7 @@ const LoginForm = () => {
     }
     try {
       await dispatch(postLogin({ finalConfigSpecs: { data: values } }));
-      setValues(defaultValues);
+      setValues(defaultValues); // edit for immutability (clear()) 
       // redirect user beyond the login page
     } catch (error) {
       // handle login error
