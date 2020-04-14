@@ -9,7 +9,8 @@ import {
 import './ExampleComponent.scss';
 
 import { exampleFunction } from '../../redux/actions';
-import { ExampleReducerState } from '../../redux/reducers/exampleReducer';
+// eslint-disable-next-line no-unused-vars
+import type { ExampleReducerState } from '../../redux/reducers/exampleReducer';
 // import { buildMapStateToProps } from '../../utils';
 
 // interface ExampleComponentProps {

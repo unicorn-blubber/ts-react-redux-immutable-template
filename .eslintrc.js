@@ -26,6 +26,17 @@ module.exports = {
   ],
   rules: {
     'react/jsx-props-no-spreading': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+          js: 'never',
+          jsx: 'never',
+          ts: 'never',
+          tsx: 'never',
+          json: 'never',
+      },
+    ],
     'react/jsx-filename-extension': [
       1,
       {
@@ -42,6 +53,7 @@ module.exports = {
       '.jsx',
       '.ts',
       '.tsx',
+      '.d.ts',
     ],
     'import/resolver': {
       node: {
@@ -50,6 +62,7 @@ module.exports = {
           '.jsx',
           '.ts',
           '.tsx',
+          '.d.ts',
         ],
       },
     },

@@ -1,5 +1,6 @@
 import { Record } from 'immutable';
 
+// eslint-disable-next-line no-unused-vars
 import type { Action } from '../../react-app-env';
 
 interface ExampleReducerStateInterface {
@@ -20,7 +21,7 @@ interface ExampleReducerStateInterface {
 }
 
 export interface ExampleReducerState extends Record<ExampleReducerStateInterface>,
-  Readonly<ExampleReducerStateInterface> {};
+  Readonly<ExampleReducerStateInterface> {}
 
 const initialState: ExampleReducerState = Record<ExampleReducerStateInterface>({
   exampleVariable: 'Example',
@@ -104,7 +105,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: state.data.map(data => (data.id === payload.id ? payload : data)) as [{ id: number }], // figure out a way to not have to cast
+        data: state.data.map((data) => (data.id === payload.id ? payload : data)) as [{ id: number }], // figure out a way to not have to cast
       });
     case 'PUT_DATA_WITH_AUTH_FAILURE':
       return state.merge({
@@ -120,7 +121,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         deletingTab: false,
         errorDeletingTab: false,
-        data: state.data.filter(data => data.id !== payload.id) as [{ id: number }], // figure out a way to not have to cast
+        data: state.data.filter((data) => data.id !== payload.id) as [{ id: number }], // figure out a way to not have to cast
       });
     case 'DELETE_DATA_WITH_AUTH_FAILURE':
       return state.merge({

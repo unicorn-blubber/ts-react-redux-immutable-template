@@ -1,7 +1,10 @@
 import Axios from 'axios';
+// eslint-disable-next-line no-unused-vars
 import type { AxiosRequestConfig } from 'axios';
-import { ThunkDispatch } from 'redux-thunk';
+// eslint-disable-next-line no-unused-vars
+import type { ThunkDispatch } from 'redux-thunk';
 
+// eslint-disable-next-line no-unused-vars
 import type { Action } from '../../react-app-env';
 
 
@@ -27,7 +30,7 @@ interface ThunkDispatchProps {
 
 
 const buildThunk = ({
-  config, start, success, failure
+  config, start, success, failure,
 }: BuildThunkArgs) => ({
   data,
   params,
@@ -36,7 +39,7 @@ const buildThunk = ({
 ) => {
   dispatch({ type: start });
   try {
-    const response = await Axios.request({...config, data, params});
+    const response = await Axios.request({ ...config, data, params });
     dispatch({ type: success, payload: response.data });
   } catch (error) {
     dispatch({ type: failure, payload: error.response });
