@@ -5,11 +5,7 @@ import type { Action } from '../../react-app-env';
 
 interface ExampleReducerStateInterface {
   exampleVariable: string,
-  data: [
-    {
-      id: number,
-    }
-  ],
+  data: any,
   sendingLogin: boolean,
   errorLoggingIn: boolean,
   loadingTabs: boolean,
@@ -25,11 +21,7 @@ export interface ExampleReducerState extends Record<ExampleReducerStateInterface
 
 const initialState: ExampleReducerState = Record<ExampleReducerStateInterface>({
   exampleVariable: 'Example',
-  data: [
-    {
-      id: 0,
-    },
-  ],
+  data: undefined,
   sendingLogin: false,
   errorLoggingIn: false,
   loadingTabs: false,
@@ -89,7 +81,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: [...state.data, payload] as [{ id: number }], // better way? 
+        data: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
       });
     case 'POST_DATA_WITH_AUTH_FAILURE':
       return state.merge({
@@ -105,9 +97,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: state.data.map(
-          (data) => (data.id === payload.id ? payload : data),
-        ) as [{ id: number }], // better way? 
+        data: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
       });
     case 'PUT_DATA_WITH_AUTH_FAILURE':
       return state.merge({
@@ -123,9 +113,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         deletingTab: false,
         errorDeletingTab: false,
-        data: state.data.filter(
-          (data) => data.id !== payload.id,
-        ) as [{ id: number }], // better way? 
+        data: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
       });
     case 'DELETE_DATA_WITH_AUTH_FAILURE':
       return state.merge({

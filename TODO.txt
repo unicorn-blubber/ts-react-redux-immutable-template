@@ -1,0 +1,4 @@
+Things that should be added to this project
+* make the things in LoginForm be immutable
+* ObservableJS
+* ReduxObservable
