@@ -1,5 +1,8 @@
 /// <reference types="react-scripts" />
 
+// eslint-disable-next-line no-unused-vars
+import type { Record } from 'immutable';
+
 export type Action =
 'POST_LOGIN_START'
 | 'POST_LOGIN_SUCCESS'
@@ -17,3 +20,5 @@ export type Action =
 | 'DELETE_DATA_WITH_AUTH_SUCCESS'
 | 'DELETE_DATA_WITH_AUTH_FAILURE'
 | 'EXAMPLE_TYPE'
+
+export type ReadonlyRecord<T> = Record<T> & Readonly<T>;
