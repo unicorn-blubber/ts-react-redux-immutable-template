@@ -43,7 +43,7 @@ const LoginForm = () => {
       setErrors(errors.clear());
     } catch (error) {
       setFormErrorsIm({
-        setter: setErrors as unknown as React.Dispatch<React.SetStateAction<Record<{}>>>, // there should be a better way to do this in setFormErrorsIm.ts 
+        setter: setErrors,
         errors: error.inner,
       });
       return;
