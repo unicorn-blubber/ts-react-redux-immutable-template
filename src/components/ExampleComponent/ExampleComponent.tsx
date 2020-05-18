@@ -6,12 +6,12 @@ import {
 } from 'react-redux';
 // import type { Record } from 'immutable';
 
-import './ExampleComponent.scss';
-
 import { exampleFunction } from '../../redux/actions';
 // eslint-disable-next-line no-unused-vars
 import type { ExampleReducerState } from '../../redux/reducers/exampleReducer';
 // import { buildMapStateToProps } from '../../utils';
+
+import './ExampleComponent.scss';
 
 // interface ExampleComponentProps {
 //   exampleVariable: String,
