@@ -67,21 +67,26 @@ const LoginForm = () => {
       <div className="login-form">
         <h2 className="form-title">Log In</h2>
         <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            value={values.username}
-            onChange={handleChange}
-          />
+          <label htmlFor="username">
+            Username
+            <input
+              type="text"
+              name="username"
+              placeholder="username"
+              value={values.username}
+              onChange={handleChange}
+            />
+          </label>
           {errors.username && (<p className="error">{errors.username}</p>)}
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value={values.password}
-            onChange={handleChange}
-          />
+          <label htmlFor="password">
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              value={values.password}
+              onChange={handleChange}
+            />
+          </label>
           {errors.password && (<p className="error">{errors.password}</p>)}
           <button type="submit" className="submit">Log In</button>
         </form>
