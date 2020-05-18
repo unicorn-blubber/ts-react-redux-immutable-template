@@ -70,6 +70,7 @@ const LoginForm = () => {
           <label htmlFor="username">
             Username
             <input
+              id="username"
               type="text"
               name="username"
               placeholder="username"
@@ -80,6 +81,7 @@ const LoginForm = () => {
           {errors.username && (<p className="error">{errors.username}</p>)}
           <label htmlFor="password">
             <input
+              id="username"
               type="password"
               name="password"
               placeholder="password"
