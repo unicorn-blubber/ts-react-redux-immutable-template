@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { Record } from 'immutable';
-
-import './LoginForm.scss';
 
 import { postLogin } from '../../redux/actions';
-import { setFormErrorsIm } from '../../utils';
+import {
+  newRecord,
+  setFormErrorsIm,
+} from '../../utils';
+
+import './LoginForm.scss';
 
 const loginSchema = Yup.object().shape({
   username: Yup
@@ -31,8 +33,8 @@ const defaultErrors = {
 };
 
 const LoginForm = () => {
-  const [values, setValues] = useState(Record(defaultValues)());
-  const [errors, setErrors] = useState(Record(defaultErrors)());
+  const [values, setValues] = useState(newRecord(defaultValues));
+  const [errors, setErrors] = useState(newRecord(defaultErrors));
   const dispatch = useDispatch();
 
 
