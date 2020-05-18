@@ -82,6 +82,7 @@ const LoginForm = () => {
           </label>
           {errors.username && (<p className="error">{errors.username}</p>)}
           <label htmlFor="password">
+            Password
             <input
               id="username"
               type="password"
