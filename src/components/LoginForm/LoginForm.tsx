@@ -33,8 +33,8 @@ const defaultErrors = {
 };
 
 const LoginForm = () => {
-  const [values, setValues] = useState(newRecord(defaultValues));
-  const [errors, setErrors] = useState(newRecord(defaultErrors));
+  const [values, setValues] = useState(newRecord({ defaultValues }));
+  const [errors, setErrors] = useState(newRecord({ defaultValues: defaultErrors }));
   const dispatch = useDispatch();
 
 
@@ -60,6 +60,7 @@ const LoginForm = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // use event.persist() if you're evaluating the event object with any async code!!! 
     const { name, value } = event.target;
     setValues((oldValues) => ({ ...oldValues, [name]: value }));
   };
