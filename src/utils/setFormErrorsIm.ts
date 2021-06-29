@@ -1,8 +1,5 @@
-// eslint-disable-next-line no-unused-vars
 import type { ValidationError } from 'yup';
-// eslint-disable-next-line no-unused-vars
 import type { ReadonlyRecord } from '../react-app-env';
-
 interface SetFormErrorsImArgs<T> {
   setter: React.Dispatch<React.SetStateAction<ReadonlyRecord<T>>>,
   errors: [ValidationError],
