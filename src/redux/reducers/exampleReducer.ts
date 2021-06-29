@@ -5,7 +5,8 @@ import type { Action } from '../../react-app-env';
 
 interface ExampleReducerStateInterface {
   exampleVariable: string,
-  data: any,
+  resData: any,
+  errData: any,
   sendingLogin: boolean,
   errorLoggingIn: boolean,
   loadingTabs: boolean,
@@ -21,7 +22,8 @@ export interface ExampleReducerState extends Record<ExampleReducerStateInterface
 
 const initialState: ExampleReducerState = Record<ExampleReducerStateInterface>({
   exampleVariable: 'Example',
-  data: undefined,
+  resData: undefined,
+  errData: undefined,
   sendingLogin: false,
   errorLoggingIn: false,
   loadingTabs: false,
@@ -55,6 +57,7 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingLogin: false,
         errorLoggingIn: true,
+        errData: payload,
       });
     case 'GET_DATA_WITH_AUTH_START':
       return state.merge({
@@ -65,12 +68,13 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         loadingTabs: false,
         errorLoadingTabs: false,
-        data: payload,
+        resData: payload,
       });
     case 'GET_DATA_WITH_AUTH_FAILURE':
       return state.merge({
         loadingTabs: false,
         errorLoadingTabs: true,
+        errData: payload,
       });
     case 'POST_DATA_WITH_AUTH_START':
       return state.merge({
@@ -81,12 +85,13 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
+        resData: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
       });
     case 'POST_DATA_WITH_AUTH_FAILURE':
       return state.merge({
         sendingTabData: false,
         errorSendingTab: true,
+        errData: payload,
       });
     case 'PUT_DATA_WITH_AUTH_START':
       return state.merge({
@@ -97,12 +102,13 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         sendingTabData: false,
         errorSendingTab: false,
-        data: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
+        resData: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
       });
     case 'PUT_DATA_WITH_AUTH_FAILURE':
       return state.merge({
         sendingTabData: false,
         errorSendingTab: true,
+        errData: payload,
       });
     case 'DELETE_DATA_WITH_AUTH_START':
       return state.merge({
@@ -113,12 +119,13 @@ export const reducer = (state = initialState, { type, payload }: ActionProps) =>
       return state.merge({
         deletingTab: false,
         errorDeletingTab: false,
-        data: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
+        resData: payload, // tranform this to be immutable as deep as possible, you will have to also cast this in the files that use it
       });
     case 'DELETE_DATA_WITH_AUTH_FAILURE':
       return state.merge({
         deletingTab: false,
         errorDeletingTab: true,
+        errData: payload,
       });
     case 'EXAMPLE_TYPE':
       return state.merge({ exampleVariable: payload });
