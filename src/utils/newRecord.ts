@@ -1,7 +1,6 @@
 import { Record } from 'immutable';
 
-// eslint-disable-next-line no-unused-vars
-import { ReadonlyRecord } from '../react-app-env';
+import type { ReadonlyRecord } from '../react-app-env';
 
 interface NewRecordArg<T>{
   defaultValues: T,
