@@ -21,6 +21,4 @@ export type Action =
 | 'DELETE_DATA_WITH_AUTH_FAILURE'
 | 'EXAMPLE_TYPE'
 
-export interface ReadonlyRecord<T> extends Record<T>, Readonly<T> {
-  // intentionally empty
-}
+export type ReadonlyRecord<T> = Record<T> & Readonly<T>
