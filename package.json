@@ -15,7 +15,7 @@
     "@types/yup": "^0.29.11",
     "axios": "^0.21.1",
     "immutable": "^4.0.0-rc.12",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.4",
